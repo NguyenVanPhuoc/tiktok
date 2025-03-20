@@ -7,29 +7,25 @@ import styles from './AccountPreview.module.scss';
 
 const cx = classNames.bind(styles);
 
-function AccountPreview() {
+function AccountPreview({ user }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
-                <img
-                    className={cx('avatar')}
-                    src="https://i.pravatar.cc/150?img=3"
-                    alt=""
-                />
+                <img className={cx('avatar')} src={user.avatar} alt="" />
                 <Button className={cx('follow-btn')} primary>
                     Follow
                 </Button>
             </div>
             <div className={cx('body')}>
                 <p className={cx('nickname')}>
-                    <strong>boykadev267</strong>
-                    <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                    <strong>{user.nickname}</strong>
+                    {user.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                 </p>
-                <p className={cx('name')}>Nguyễn Phước</p>
+                <p className={cx('name')}>{user.name}</p>
                 <p className={cx('analytics')}>
-                    <strong className={cx('value')}>8.2M </strong>
+                    <strong className={cx('value')}>{user.followers_count} </strong>
                     <span className={cx('label')}>Followers</span>
-                    <strong className={cx('value')}>8.2M </strong>
+                    <strong className={cx('value')}>{user.likes_count} </strong>
                     <span className={cx('label')}>Likes</span>
                 </p>
             </div>

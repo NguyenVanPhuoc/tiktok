@@ -7,7 +7,7 @@ import * as accountServices from '~/services/accountService';
 
 const cx = classNames.bind(styles);
 
-function SuggestedAccounts({ label }) {
+function FollowingAccounts({ label }) {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showAll, setShowAll] = useState(false);
@@ -15,7 +15,7 @@ function SuggestedAccounts({ label }) {
     useEffect(() => {
         const fetchApi = async () => {
             setLoading(true);
-            const result = await accountServices.get('l', 'less');
+            const result = await accountServices.get('t', 'less');
             setUsers(result);
             setLoading(false);
         };
@@ -47,8 +47,8 @@ function SuggestedAccounts({ label }) {
     );
 }
 
-SuggestedAccounts.propTypes = {
+FollowingAccounts.propTypes = {
     label: PropTypes.string.isRequired,
 };
 
-export default SuggestedAccounts;
+export default FollowingAccounts;
